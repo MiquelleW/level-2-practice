@@ -72,3 +72,14 @@ console.log(orderTotal(4.5, 3));
 // ---------- Extra practice (if you finish early) ----------
 // 1. Change your menu item's price AFTER you made the object, then log it again.
 // 2. Write isCheap(price): return "cheap!" if price is under 5, otherwise "fancy".
+
+function isCheap(price) {
+  if (price < 5) {
+    return "cheap!";
+  } else {
+    return "fancy";
+  }
+}
+
+console.log(isCheap(4.99));
+console.log(isCheap(8.99));
