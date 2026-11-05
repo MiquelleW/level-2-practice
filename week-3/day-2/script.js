@@ -78,3 +78,11 @@ const dessertTruck = {
 console.log(dessertTruck.describe());
 
 // 2. Pretty JSON: try JSON.stringify(yourItem, null, 2) and compare.
+
+console.log(JSON.stringify(myParsed, null, 2));
+
+const menuJson =
+  '[{"name":"Pizza Dip & Garlic Knots","price":12},{"name":"Philly Cheesesteak Eggrolls","price":8.99},{"name":"Loaded Potato Cheese Balls","price":8}]';
+const menuItems = JSON.parse(menuJson);
+
+console.log(menuItems.length);
