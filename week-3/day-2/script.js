@@ -50,19 +50,31 @@ console.log("Step 3 price:", exampleParsed.price);
 // TODO: Write a JSON string for one of YOUR menu items. Parse it. Log one property.
 const myJson =
   '{"name":"Philly Cheesesteak Eggrolls","price":8.99,"spicy":false}';
+const myParsed = JSON.parse(myJson);
+console.log("Step 3: text:", myJson);
+// console.log("Step 3:", myJson.price);
+console.log("Step 3:", myParsed);
+console.log("Step 3:", myParsed.price);
 
-const item = JSON.parse(myJson);
-console.log(item.price);
 // ---------- Step 4: JavaScript → JSON text ----------
 // Example:
 const exampleBack = JSON.stringify(exampleParsed);
 console.log("Step 4:", exampleBack, typeof exampleBack); // it's a string again
 
 // TODO: Turn your parsed menu item back into a JSON string and log it with typeof.
-const jsonAgain = JSON.stringify(item);
+const backToString = JSON.stringify(myParsed);
+console.log("Step 4:", backToString, typeof backToString);
 
-console.log(jsonAgain);
-console.log(typeof jsonAgain);
 // ---------- Extra practice (if you finish early) ----------
 // 1. Make a second truck object with its own describe() method.
+
+const dessertTruck = {
+  name: "The Dessert Feed",
+  describe: function () {
+    return "Welcome to " + this.name + "!";
+  },
+};
+
+console.log(dessertTruck.describe());
+
 // 2. Pretty JSON: try JSON.stringify(yourItem, null, 2) and compare.
