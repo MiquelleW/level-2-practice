@@ -30,9 +30,6 @@ const myTruck = {
 
 // TODO: Log the result of calling describe().
 console.log("Step 1:", myTruck.describe());
-console.log("Regular:", myTruck.describe());
-console.log("Arrow:", myTruck.describeArrow());
-
 
 // ---------- Step 2: Compare with an arrow function ----------
 // Example:
@@ -45,8 +42,11 @@ const exampleArrowTruck = {
 console.log("Step 2:", exampleArrowTruck.describe()); // the name is missing!
 
 // TODO: Add an arrow-function version to YOUR truck and log it.
+console.log("Regular:", myTruck.describe());
+console.log("Arrow:", myTruck.describeArrow());
 // TODO: Write one sentence in a comment: what went wrong with the arrow version?
 // (Hint: arrow functions don't get their own "this".)
+// The arrow function does not get its own "this", so it cannot access the truck's name through this.name.
 
 // ---------- Step 3: JSON text → JavaScript ----------
 // JSON is text that looks like an object. JSON.parse turns it into a real object.
