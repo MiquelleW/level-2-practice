@@ -8,12 +8,11 @@
 
 // First: replace this menu with YOUR truck's menu (keep the same shape).
 const menu = [
-  { name: "Taco", price: 4.5 },
-  { name: "Burrito", price: 9 },
-  { name: "Nachos", price: 6.25 },
-  { name: "Churro", price: 3 },
+  { name: "Pizza Dip & Garlic Knots", price: 11.99 },
+  { name: "Philly Cheesesteak Eggrolls", price: 8.99 },
+  { name: "Loaded Potato Cheese Balls", price: 7.99 },
+  { name: "Cheeseburger Loaded Fries", price: 10.99 },
 ];
-
 
 // ---------- Step 1: Log every price ----------
 // EXAMPLE: log every item's NAME.
@@ -24,7 +23,9 @@ for (let i = 0; i < menu.length; i++) {
 
 // YOUR TURN: log every item's PRICE.
 // Change one thing: .name → .price
-
+for (let i = 0; i < menu.length; i++) {
+  console.log(menu[i].price);
+}
 
 // ---------- Step 2: A sentence for each item ----------
 // EXAMPLE: logs "Taco is on the menu", "Burrito is on the menu"...
@@ -34,7 +35,9 @@ for (let i = 0; i < menu.length; i++) {
 
 // YOUR TURN: log "Taco costs $4.5", "Burrito costs $9"...
 // Change one thing: " is on the menu" → " costs $" + menu[i].price
-
+for (let i = 0; i < menu.length; i++) {
+  console.log(menu[i].name + " costs $" + menu[i].price);
+}
 
 // ---------- Step 3: Put the menu on the page ----------
 // EXAMPLE: puts every NAME on the page, one per line. (Same as Menu Card.)
@@ -48,7 +51,6 @@ for (let i = 0; i < menu.length; i++) {
 // so each line shows the name AND the price, like "Taco: $4.5".
 // Change one thing: menu[i].name → menu[i].name + ": $" + menu[i].price
 
-
 // ---------- Step 4: Add up a total ----------
 // EXAMPLE: COUNT the items. count starts at 0 BEFORE the loop,
 // and goes up by 1 INSIDE the loop.
@@ -60,7 +62,6 @@ console.log("Items:", count);
 
 // YOUR TURN: add up every PRICE into a total. Log it.
 // Change: count → total, and + 1 → + menu[i].price
-
 
 // ---------- Extra (if you finish early): only SOME items ----------
 // EXAMPLE: logs only the items that cost LESS than $5.
