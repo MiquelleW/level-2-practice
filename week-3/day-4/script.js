@@ -44,7 +44,8 @@ for (let i = 0; i < menu.length; i++) {
 const menuText = document.querySelector("#menu-text");
 menuText.textContent = "";
 for (let i = 0; i < menu.length; i++) {
-  menuText.textContent = menuText.textContent + menu[i].name + "\n";
+  menuText.textContent =
+    menuText.textContent + menu[i].name + ": $" + menu[i].price + "\n";
 }
 
 // YOUR TURN: don't copy this one. Change the example above,
@@ -62,6 +63,11 @@ console.log("Items:", count);
 
 // YOUR TURN: add up every PRICE into a total. Log it.
 // Change: count → total, and + 1 → + menu[i].price
+let total = 0;
+for (let i = 0; i < menu.length; i++) {
+  total = total + menu[i].price;
+}
+console.log("Total:", total);
 
 // ---------- Extra (if you finish early): only SOME items ----------
 // EXAMPLE: logs only the items that cost LESS than $5.
@@ -75,3 +81,8 @@ for (let i = 0; i < menu.length; i++) {
 
 // YOUR TURN: log only the items that cost MORE than $5, like "Fancy: Burrito".
 // Change: < → >   and   "Cheap:" → "Fancy:"
+for (let i = 0; i < menu.length; i++) {
+  if (menu[i].price > 5) {
+    console.log("Fancy:", menu[i].name);
+  }
+}
