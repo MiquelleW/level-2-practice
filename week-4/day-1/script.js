@@ -59,16 +59,13 @@ menu.forEach(function (item) {
 const menuText = document.querySelector("#menu-text");
 menuText.textContent = "";
 menu.forEach(function (item) {
-  menuText.textContent = menuText.textContent + item.name + "\n";
+  menuText.textContent =
+    menuText.textContent + item.name + ": $" + item.price + "\n";
 });
 
 // YOUR TURN: don't copy this one. Change the example above,
 // so each line shows the name AND the price, like "Taco: $4.5".
 // Change: item.name → item.name + ": $" + item.price
-menu.forEach(function (item) {
-  menuText.textContent =
-    menuText.textContent + item.name + ": $" + item.price + "\n";
-});
 
 // ---------- Extra (if you finish early): add it up ----------
 // EXAMPLE: COUNT the items. count starts at 0 BEFORE forEach,
