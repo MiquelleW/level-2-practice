@@ -7,13 +7,13 @@
 //   3. Change what the comment says.
 
 // First: replace this menu with YOUR truck's menu (keep the same shape).
-const menu = [
-  { name: "Taco", price: 4.5 },
-  { name: "Burrito", price: 9 },
-  { name: "Nachos", price: 6.25 },
-  { name: "Churro", price: 3 },
-];
 
+const menu = [
+  { name: "Pizza Dip & Garlic Knots", price: 11.99 },
+  { name: "Philly Cheesesteak Eggrolls", price: 8.99 },
+  { name: "Loaded Potato Cheese Balls", price: 7.99 },
+  { name: "Cheeseburger Loaded Fries", price: 10.99 },
+];
 
 // ---------- Step 1: Same job, no counter ----------
 // THE for LOOP YOU ALREADY KNOW: logs every name.
@@ -33,6 +33,11 @@ menu.forEach(logName);
 // YOUR TURN: log every item's PRICE.
 // Change: logName → logPrice (2 places), and .name → .price
 
+function logPrice(item) {
+  console.log(item.price);
+}
+
+menu.forEach(logPrice);
 
 // ---------- Step 2: Write the function right inside ----------
 // EXAMPLE: logs "Taco is on the menu", "Burrito is on the menu"...
@@ -44,7 +49,9 @@ menu.forEach(function (item) {
 
 // YOUR TURN: log "Taco costs $4.5", "Burrito costs $9"...
 // Change: " is on the menu" → " costs $" + item.price
-
+menu.forEach(function (item) {
+  console.log(item.name + " costs $" + item.price);
+});
 
 // ---------- Step 3: Put the menu on the page ----------
 // EXAMPLE: puts every NAME on the page, one per line.
@@ -58,7 +65,10 @@ menu.forEach(function (item) {
 // YOUR TURN: don't copy this one. Change the example above,
 // so each line shows the name AND the price, like "Taco: $4.5".
 // Change: item.name → item.name + ": $" + item.price
-
+menu.forEach(function (item) {
+  menuText.textContent =
+    menuText.textContent + item.name + ": $" + item.price + "\n";
+});
 
 // ---------- Extra (if you finish early): add it up ----------
 // EXAMPLE: COUNT the items. count starts at 0 BEFORE forEach,
@@ -71,3 +81,8 @@ console.log("Items:", count);
 
 // YOUR TURN: add up every PRICE into a total. Log it.
 // Change: count → total, and + 1 → + item.price
+let total = 0;
+menu.forEach(function (item) {
+  total = total + item.price;
+});
+console.log("Total:", total);
