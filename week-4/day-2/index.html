@@ -1,49 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 4 Day 2 — Flex Layouts + createElement</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body>
-  <main class="container py-4">
-    <h1>Week 4 Day 2 — Flex Layouts + createElement</h1>
-    <p><a href="../../index.html">← All practice days</a></p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 4 Day 2 — Flex Layouts + createElement</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .bg-truck {
+        background-color: #b22222;
+      }
 
-    <!-- ========== Cards made by JavaScript (script.js) ========== -->
-    <h2 class="mt-4">Cards from JavaScript</h2>
-    <p>This box starts empty. Every card in it is made by <code>script.js</code>.</p>
-    <div id="card-area" class="d-flex flex-wrap gap-3"></div>
+      .btn-truck {
+        --bs-btn-bg: #292929;
+        --bs-btn-border-color: #292929;
+        --bs-btn-color: white;
+        --bs-btn-hover-bg: #444444;
+        --bs-btn-hover-border-color: #444444;
+        --bs-btn-hover-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1>Week 4 Day 2 — Flex Layouts + createElement</h1>
+      <p><a href="../../index.html">← All practice days</a></p>
 
+      <!-- ========== Cards made by JavaScript (script.js) ========== -->
+      <h2 class="mt-4">Cards from JavaScript</h2>
+      <p>
+        This box starts empty. Every card in it is made by
+        <code>script.js</code>.
+      </p>
+      <div id="card-area" class="d-flex flex-wrap gap-3"></div>
 
-    <!-- ========== Layout 1: stack on phones, a row on bigger screens ========== -->
-    <h2 class="mt-5">Layout 1: How to order</h2>
-    <!-- TODO: give the div below these classes: d-flex flex-column flex-md-row gap-3 -->
-    <div class="">
-      <div class="p-4 bg-primary text-white">1. Order</div>
-      <div class="p-4 bg-success text-white">2. Pay</div>
-      <div class="p-4 bg-warning">3. Eat</div>
-    </div>
-    <!-- TODO: change the three steps to fit YOUR truck. -->
+      <!-- ========== Layout 1: stack on phones, a row on bigger screens ========== -->
+      <h2 class="mt-5">Layout 1: How to order</h2>
+      <!-- TODO: give the div below these classes: d-flex flex-column flex-md-row gap-3 -->
+      <div class="d-flex flex-column flex-md-row gap-3">
+        <div class="p-4 bg-primary text-white">1. Pick Your Snack</div>
+        <div class="p-4 bg-success text-white">2. Place Your Order</div>
+        <div class="p-4 bg-warning">3. Enjoy Your Food</div>
+      </div>
 
+      <!-- TODO: change the three steps to fit YOUR truck. -->
 
-    <!-- ========== Layout 2: a bar with one thing left, one thing right ========== -->
-    <h2 class="mt-5">Layout 2: Top bar</h2>
-    <!-- TODO: build a bar with your truck's name on the LEFT and a button on the RIGHT,
+      <!-- ========== Layout 2: a bar with one thing left, one thing right ========== -->
+      <h2 class="mt-5">Layout 2: Top bar</h2>
+      <!-- TODO: build a bar with your truck's name on the LEFT and a button on the RIGHT,
          both lined up in the middle (top to bottom).
          Classes you'll need: d-flex  justify-content-between  align-items-center
          Give it a background and padding so you can see it: bg-dark text-white p-3 -->
+      <div
+        class="d-flex justify-content-between align-items-center bg-truck text-white p-3"
+      >
+        <span class="fw-bold">The Snack Feed</span>
+        <a href="#" class="btn btn-truck">Order Now</a>
+      </div>
 
-
-
-    <!-- ========== Compare ========== -->
-    <h2 class="mt-5">Framework vs plain CSS</h2>
-    <!-- TODO: write 1–2 sentences: what was easier with Bootstrap classes?
+      <!-- ========== Compare ========== -->
+      <h2 class="mt-5">Framework vs plain CSS</h2>
+      <!-- TODO: write 1–2 sentences: what was easier with Bootstrap classes?
          What would you have written in style.css instead? -->
-    <p></p>
-  </main>
+      <p>
+        Bootstrap is convenient because it gives me shortcuts for styling
+        instead of writing everything in CSS. The button styling was probably
+        the easiest for me because it reminded me of what we learned before, but
+        without Bootstrap, I would have needed to write the button styles and
+        Flexbox properties like display: flex in my stylesheet.
+      </p>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
