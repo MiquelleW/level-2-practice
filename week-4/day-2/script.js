@@ -12,7 +12,7 @@
 const menu = [
   { name: "Pizza Dip & Garlic Knots", price: 11.99 },
   { name: "Philly Cheesesteak Eggrolls", price: 8.99 },
-  { name: "Loaded Potato Cheese Balls", price: 7.99 },
+  { name: "Loaded Potato Cheese Balls", price: 4.99 },
   { name: "Cheeseburger Loaded Fries", price: 10.99 },
 ];
 
@@ -39,7 +39,13 @@ area.appendChild(card2);
 // EXAMPLE: the same 4 moves, inside forEach. One card per menu item.
 menu.forEach(function (item) {
   const itemCard = document.createElement("div");
-  itemCard.className = "card p-3 text-center shadow-sm";
+
+  if (item.price < 5) {
+    itemCard.className = "card p-3 text-center shadow-sm bg-success-subtle";
+  } else {
+    itemCard.className = "card p-3 text-center shadow-sm";
+  }
+
   itemCard.textContent = item.name + ": $" + item.price;
   area.appendChild(itemCard);
 });
