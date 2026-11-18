@@ -11,12 +11,9 @@ const latitude = 35.22709;
 const longitude = -80.84313;
 
 // The same address you sent in your API tool, built from the pieces.
-const url =
-  "https://api.open-meteo.com/v1/forecast?latitude=" +
-  latitude +
-  "&longitude=" +
-  longitude +
-  "&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit";
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit`;
+
+// const url = "https://digimon-api.vercel.app/api/digimon";
 
 // ---------- Step 1: Send the request ----------
 // EXAMPLE: async = "this function has waiting in it". await = "wait here until it's back".
@@ -53,11 +50,19 @@ getWeather();
 
 // ---------- Extra (if you finish early): who prints first? ----------
 // Guess first: does this line print BEFORE or AFTER "Status: 200"? Save and check.
+// It prints before because await pauses the weather function, but the rest of the script keeps running.
+
 // Why? (Hint: the browser doesn't stop and wait for the weather. Only getWeather waits.)
 console.log("This line is at the bottom of the file.");
 
 // ---------- Extra 2: fetch with NO await ----------
 // This line sends the same request, but there's no await in front of fetch.
 // Guess first: will the console show the weather after "No await:"? Find it in the console and check.
+// Without await, fetch returns a promise instead of the actual weather data.
+
 // Why? (Hint: without await, you get the order ticket, not the food.)
 console.log("No await:", fetch(url));
+
+// My first weather request used Austin and my second request used Charlotte.
+// I changed the latitude and longitude to get Charlotte's weather information.
+// Both requests returned a 200 OK status, but the temperature and wind speed values were different.
