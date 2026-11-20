@@ -15,6 +15,11 @@ async function loadRecipe() {
 
     // ---------- Step 2 goes here (loading message) ----------
 
+    if (input.value === "") {
+      statusText.textContent = "Please enter a recipe number.";
+      return;
+    }
+
     statusText.textContent = "Loading...";
 
     const response = await fetch(url);
@@ -48,12 +53,28 @@ async function loadRecipe() {
     time.textContent = "Ready in " + recipe.prepTimeMinutes + " minutes";
     card.appendChild(time);
 
+    const ingredientsList = document.createElement("ul");
+
+    recipe.ingredients.forEach(function (ingredient) {
+      const li = document.createElement("li");
+      li.textContent = ingredient;
+      ingredientsList.appendChild(li);
+    });
+
+    card.appendChild(ingredientsList);
+
+    const image = document.createElement("img");
+    image.src = recipe.image;
+    image.alt = recipe.name;
+    image.className = "img-fluid rounded";
+
+    card.appendChild(image);
+
     recipeArea.appendChild(card);
   } catch (error) {
     statusText.textContent =
       "Can't reach the recipe server. Check your internet.";
   }
-
   // YOUR TURN: add 2 more fields to the card, under the title. For example:
   //   a <p> with the cuisine:           "Cuisine: Italian"
   //   a <p> with the prep time:         "Ready in 20 minutes"   (recipe.prepTimeMinutes)
