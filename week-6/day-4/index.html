@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 6 Day 4 — Character Stats</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&display=swap">
+  <!-- The theme comes BEFORE style.css, so your .dead style still wins -->
+  <style>
+    /* Colors picked from the poster */
+    :root {
+      --portal-green: #97ce4c;
+      --rick-blue: #44c8e8;
+      --morty-yellow: #f0e14a;
+      --summer-pink: #e868c8;
+      --space-dark: #0d1f22;
+      --space-teal: #1f3d3d;
+      --card-dark: #16292b;
+    }
+
+    body {
+      color: #e8f4f0;
+      background: linear-gradient(180deg, var(--space-dark) 0%, var(--space-teal) 55%, #5a2a4a 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: "Creepster", cursive;
+      color: var(--rick-blue);
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 6px var(--portal-green), 0 0 18px var(--portal-green);
+    }
+
+    h2 { color: var(--portal-green); }
+
+    a { color: var(--portal-green); }
+    a:hover { color: var(--morty-yellow); }
+
+    .poster {
+      width: 100%;
+      max-width: 160px;
+      border-radius: 12px;
+      border: 3px solid var(--portal-green);
+      box-shadow: 0 0 20px rgba(151, 206, 76, 0.5);
+    }
+
+    .credit {
+      font-size: 0.75rem;
+      color: #a9c4c0;
+    }
+    .credit a { color: #a9c4c0; }
+
+    #status { color: var(--summer-pink); }
+
+    /* Every card: dark, with a Rick-blue edge */
+    .card {
+      background-color: var(--card-dark);
+      color: #e8f4f0;
+      border: 2px solid var(--rick-blue);
+    }
+
+    /* The back of a flip card gets a portal-green edge */
+    .back { border-color: var(--portal-green); }
+
+    /* The big numbers in the summary cards */
+    #summary .display-6 { color: var(--morty-yellow); }
+    #summary .text-secondary { color: #a9c4c0 !important; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container py-4" style="max-width: 1000px;">
+    <div class="d-flex gap-4 align-items-start mb-3">
+      <div class="flex-grow-1">
+        <h1>Week 6 Day 4 — Character Stats</h1>
+        <p><a href="../../index.html">← All practice days</a></p>
+      </div>
+      <div class="d-none d-sm-block text-end">
+        <img class="poster" src="images/rick-and-morty-poster.png" alt="Fan art of Rick, Morty and Summer next to Rick's space cruiser">
+        <p class="credit mt-2 mb-0">
+          Art by <a href="https://www.deviantart.com/jd-dibujandoando">JD-Dibujandoando</a> (2017),<br>
+          <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/">CC BY-NC-ND 3.0</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Your loading and error messages replace this text -->
+    <p id="status" class="fw-bold">No characters yet. Write Step 1 in script.js!</p>
+
+    <h2 class="h4">Summaries</h2>
+    <div id="summary" class="row g-3 mb-4"></div>
+
+    <h2 class="h4">All characters</h2>
+    <p class="small">Click a card to flip it.</p>
+    <div id="character-list" class="row g-3"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

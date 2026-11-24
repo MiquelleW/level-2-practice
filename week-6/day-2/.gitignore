@@ -1,0 +1,4 @@
+# Git ignores the files listed here: they never get committed or pushed.
+# config.js holds YOUR API key, so it must never reach GitHub.
+
+config.js
