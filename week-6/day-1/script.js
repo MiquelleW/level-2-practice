@@ -15,29 +15,45 @@ const statusText = document.getElementById("status");
 const results = document.getElementById("results");
 
 async function searchCharacters() {
-  // A template literal: backticks ` ` instead of quotes, and ${...} drops a value into the text.
-  const url = `https://rickandmortyapi.com/api/character/?name=${searchBox.value}`;
+  try {
+    // A template literal: backticks ` ` instead of quotes, and ${...} drops a value into the text.
+    const url = `https://rickandmortyapi.com/api/character/?name=${searchBox.value}`;
 
-  // ---------- Step 1 goes here: clear old results + LOADING ----------
+    // ---------- Step 1 goes here: clear old results + LOADING ----------
+    results.textContent = "";
+    statusText.textContent = "Searching...";
 
-  const response = await fetch(url);
+    const response = await fetch(url);
 
-  // ---------- Step 3 goes here: EMPTY (it must come BEFORE Step 2's check) ----------
+    // ---------- Step 3 goes here: EMPTY (it must come BEFORE Step 2's check) ----------
+    if (response.status === 404) {
+      statusText.textContent = `No characters match "${searchBox.value}". Try "rick".`;
+      return;
+    }
 
-  // ---------- Step 2 goes here: ERROR check ----------
+    // ---------- Step 2 goes here: ERROR check ----------
+    if (!response.ok) {
+      statusText.textContent = `Something went wrong (status ${response.status}). Try again.`;
+      return;
+    }
 
-  const data = await response.json();
-  console.log(data);
+    const data = await response.json();
+    console.log(data);
 
-  // Step 1: #2 - Take the Searching... message away so it isn't there after you get your results
-
-  // SUCCESS: one list item per character
-  data.results.forEach(function (character) {
-    const item = document.createElement("li");
-    item.className = "list-group-item";
-    item.textContent = `${character.name} (${character.species}, ${character.status})`;
-    results.appendChild(item);
-  });
+    // Step 1: #2 - Take the Searching... message away so it isn't there after you get your results
+    statusText.textContent = "";
+    // SUCCESS: one list item per character
+    data.results.forEach(function (character) {
+      const item = document.createElement("li");
+      item.className = "list-group-item";
+      item.textContent = `${character.name} (${character.species}, ${character.status})`;
+      results.appendChild(item);
+    });
+  } catch (error) {
+    console.log(error);
+    statusText.textContent =
+      "Can't reach the Rick and Morty server. Check your internet and try again.";
+  }
 }
 
 searchButton.addEventListener("click", searchCharacters);
