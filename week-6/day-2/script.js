@@ -8,17 +8,18 @@ const askButton = document.getElementById("ask-btn");
 const statusText = document.getElementById("status");
 const answer = document.getElementById("answer");
 
-const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent";
-
+const url =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent";
 
 // Tells the AI who to be. It goes in front of every question.
-const character = "You are Rick Sanchez from Rick and Morty. Answer in 2 short sentences, and keep it friendly. ";
-
+const character =
+  "You are Rick Sanchez from Rick and Morty. Answer in 2 short sentences, and keep it friendly. ";
 
 async function askRick() {
   // No config.js yet? Say so, instead of a confusing red error.
   if (typeof GEMINI_KEY === "undefined") {
-    statusText.textContent = "No key found. Make config.js first (see config.example.js).";
+    statusText.textContent =
+      "No key found. Make config.js first (see config.example.js).";
     return;
   }
 
@@ -33,11 +34,11 @@ async function askRick() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-goog-api-key": GEMINI_KEY
+        "x-goog-api-key": GEMINI_KEY,
       },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: `${character} Say hello in one line.` }] }]
-      })
+        contents: [{ parts: [{ text: `${character} ${questionBox.value}` }] }],
+      }),
     });
     // YOUR TURN: send the user's question instead.
     // Inside the backticks, change:  Say hello in one line.  →  ${questionBox.value}
@@ -54,7 +55,9 @@ async function askRick() {
 
     // ---------- Step 3: dig out the text ----------
     // EXAMPLE: shows the whole response as text. Hard to read!
-    answer.textContent = JSON.stringify(data);
+    answer.textContent = JSON.stringify(
+      data.candidates[0].content.parts[0].text,
+    );
 
     // YOUR TURN: show ONLY the AI's answer. You found the path in your API tool last week:
     //   data.candidates[0].content.parts[0].text
@@ -65,7 +68,6 @@ async function askRick() {
 }
 
 askButton.addEventListener("click", askRick);
-
 
 // ---------- Extra (if you finish early) ----------
 // 1. Change who answers: edit the  character  line to be Morty, Summer, or anyone you like.
