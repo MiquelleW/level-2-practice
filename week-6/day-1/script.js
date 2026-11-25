@@ -22,6 +22,7 @@ async function searchCharacters() {
 
     if (searchBox.value.trim() === "") {
       statusText.textContent = "Type a name first.";
+      statusText.className = "text-secondary";
       results.textContent = "";
       return;
     }
@@ -37,12 +38,14 @@ async function searchCharacters() {
     // ---------- Step 3 goes here: EMPTY (it must come BEFORE Step 2's check) ----------
     if (response.status === 404) {
       statusText.textContent = `No characters match "${searchBox.value}". Try "rick".`;
+      statusText.className = "text-danger";
       return;
     }
 
     // ---------- Step 2 goes here: ERROR check ----------
     if (!response.ok) {
-      statusText.textContent = `Something went wrong (status ${response.status}). Try again.`;
+      statusText.textContent = `Something went wrong (status ${response.status}).`;
+      statusText.className = "text-danger";
       return;
     }
 
@@ -53,6 +56,7 @@ async function searchCharacters() {
     statusText.textContent = "";
 
     statusText.textContent = `Found ${data.info.count} characters`;
+    statusText.className = "text-success";
 
     // SUCCESS: one list item per character
     data.results.forEach(function (character) {
@@ -66,6 +70,7 @@ async function searchCharacters() {
     statusText.textContent =
       "Can't reach the Rick and Morty server. Check your internet and try again.";
 
+    statusText.className = "text-danger";
     retryButton.classList.remove("d-none");
   }
 }
