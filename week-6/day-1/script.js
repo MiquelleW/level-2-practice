@@ -14,8 +14,17 @@ const searchButton = document.getElementById("search-btn");
 const statusText = document.getElementById("status");
 const results = document.getElementById("results");
 
+const retryButton = document.getElementById("retry-btn");
+
 async function searchCharacters() {
   try {
+    retryButton.classList.add("d-none");
+
+    if (searchBox.value.trim() === "") {
+      statusText.textContent = "Type a name first.";
+      results.textContent = "";
+      return;
+    }
     // A template literal: backticks ` ` instead of quotes, and ${...} drops a value into the text.
     const url = `https://rickandmortyapi.com/api/character/?name=${searchBox.value}`;
 
@@ -42,6 +51,9 @@ async function searchCharacters() {
 
     // Step 1: #2 - Take the Searching... message away so it isn't there after you get your results
     statusText.textContent = "";
+
+    statusText.textContent = `Found ${data.info.count} characters`;
+
     // SUCCESS: one list item per character
     data.results.forEach(function (character) {
       const item = document.createElement("li");
@@ -53,10 +65,19 @@ async function searchCharacters() {
     console.log(error);
     statusText.textContent =
       "Can't reach the Rick and Morty server. Check your internet and try again.";
+
+    retryButton.classList.remove("d-none");
   }
 }
 
 searchButton.addEventListener("click", searchCharacters);
+retryButton.addEventListener("click", searchCharacters);
+
+searchBox.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    searchCharacters();
+  }
+});
 
 // ---------- Step 1: clear old results, and show LOADING ----------
 // Search "rick", then "summer". The Ricks are still there! And there's no sign
