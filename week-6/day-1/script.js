@@ -14,12 +14,8 @@ const searchButton = document.getElementById("search-btn");
 const statusText = document.getElementById("status");
 const results = document.getElementById("results");
 
-const retryButton = document.getElementById("retry-btn");
-
 async function searchCharacters() {
   try {
-    retryButton.classList.add("d-none");
-
     if (searchBox.value.trim() === "") {
       statusText.textContent = "Type a name first.";
       statusText.className = "text-secondary";
@@ -71,12 +67,18 @@ async function searchCharacters() {
       "Can't reach the Rick and Morty server. Check your internet and try again.";
 
     statusText.className = "text-danger";
-    retryButton.classList.remove("d-none");
+
+    const retryButton = document.createElement("button");
+    retryButton.textContent = "Try again";
+    retryButton.className = "btn btn-outline-dark btn-sm ms-2";
+
+    retryButton.addEventListener("click", searchCharacters);
+
+    statusText.appendChild(retryButton);
   }
 }
 
 searchButton.addEventListener("click", searchCharacters);
-retryButton.addEventListener("click", searchCharacters);
 
 searchBox.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
