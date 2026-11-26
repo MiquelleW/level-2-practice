@@ -55,9 +55,7 @@ async function askRick() {
 
     // ---------- Step 3: dig out the text ----------
     // EXAMPLE: shows the whole response as text. Hard to read!
-    answer.textContent = JSON.stringify(
-      data.candidates[0].content.parts[0].text,
-    );
+    answer.textContent = data.candidates[0].content.parts[0].text;
 
     // YOUR TURN: show ONLY the AI's answer. You found the path in your API tool last week:
     //   data.candidates[0].content.parts[0].text
