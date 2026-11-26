@@ -12,10 +12,17 @@ const url =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent";
 
 // Tells the AI who to be. It goes in front of every question.
+// const character =
+//   "You are Rick Sanchez from Rick and Morty. Answer in 2 short sentences, and keep it friendly. ";
 const character =
-  "You are Rick Sanchez from Rick and Morty. Answer in 2 short sentences, and keep it friendly. ";
+  "You are Morty Smith from Rick and Morty. Answer in 2 short sentences, and keep it friendly. ";
 
 async function askRick() {
+  if (questionBox.value.trim() === "") {
+    statusText.textContent = "Type a question first.";
+    answer.textContent = "";
+    return;
+  }
   // No config.js yet? Say so, instead of a confusing red error.
   if (typeof GEMINI_KEY === "undefined") {
     statusText.textContent =
